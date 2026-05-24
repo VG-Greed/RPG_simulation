@@ -5,7 +5,10 @@ from llm.base_llm_client import BaseLLMClient
 
 class OpenAIClient(BaseLLMClient):
 
-    def __init__(self, api_key: str):
+    def __init__(
+        self,
+        api_key: str
+    ):
 
         self.client = AsyncOpenAI(
             api_key=api_key
@@ -13,19 +16,24 @@ class OpenAIClient(BaseLLMClient):
 
     async def generate(
         self,
-        prompt: str
+        prompt: str,
+        *,
+        system_prompt: str = (
+            "You are a professional "
+            "worldbuilding assistant."
+        ),
+        model: str = "gpt-4.1-mini",
+        temperature: float = 0.7,
+        max_tokens: int = 4000
     ) -> str:
 
         response = await self.client.chat.completions.create(
-            model="gpt-4.1-mini",
+            model=model,
 
             messages=[
                 {
                     "role": "system",
-                    "content": (
-                        "You are a professional "
-                        "worldbuilding assistant."
-                    )
+                    "content": system_prompt
                 },
                 {
                     "role": "user",
@@ -33,7 +41,10 @@ class OpenAIClient(BaseLLMClient):
                 }
             ],
 
-            temperature=0.8
+            temperature=temperature,
+
+            max_tokens=max_tokens
         )
 
         return response.choices[0].message.content
+    
