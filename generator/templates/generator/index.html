@@ -1,0 +1,55 @@
+{% extends "generator/base.html" %}
+
+{% block content %}
+
+<div class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Multi-Agent Lore Generation System
+        </h1>
+
+        <p class="subtitle">
+
+            Автоматизированная генерация игровых миров
+            с использованием многоагентной архитектуры
+            и искусственного интеллекта.
+
+        </p>
+
+        <form
+            method="POST"
+            action="{% url 'generate_world' %}"
+            class="generation-form"
+        >
+
+            {% csrf_token %}
+
+            <textarea
+                name="user_prompt"
+                placeholder="Опишите ваш игровой мир..."
+                required
+            ></textarea>
+
+            {% if error %}
+
+            <div class="error-box">
+                {{ error }}
+            </div>
+
+            {% endif %}
+
+            <button type="submit">
+
+                Сгенерировать мир
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

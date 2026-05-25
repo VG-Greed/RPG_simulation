@@ -4,7 +4,7 @@ from core.world_context import WorldContext
 
 from llm.base_llm_client import BaseLLMClient
 
-from prompts.geography_prompt import (
+from agents.prompts.geography_prompt import (
     GEOGRAPHY_PROMPT
 )
 

@@ -3,7 +3,7 @@ from core.json_parser import safe_json_loads
 
 from llm.base_llm_client import BaseLLMClient
 
-from prompts.consistency_prompt import (
+from agents.prompts.consistency_prompt import (
     CONSISTENCY_PROMPT
 )
 

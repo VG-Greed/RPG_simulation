@@ -1,4 +1,4 @@
-import asyncio
+"""import asyncio
 import os
 
 from dotenv import load_dotenv
@@ -34,4 +34,13 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main())"""
+
+from ui.app import app
+
+
+if __name__ == "__main__":
+
+    app.run(
+        debug=True
+    )

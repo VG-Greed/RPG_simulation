@@ -4,7 +4,7 @@ from core.world_context import WorldContext
 
 from llm.base_llm_client import BaseLLMClient
 
-from prompts.politics_prompt import (
+from agents.prompts.politics_prompt import (
     POLITICS_PROMPT
 )
 

@@ -1,0 +1,151 @@
+{% extends "generator/base.html" %}
+
+{% block content %}
+
+<div class="results-page">
+
+    <div class="results-header">
+
+        <h1>
+            Сгенерированный мир
+        </h1>
+
+        <a href="/" class="back-button">
+
+            ← Новая генерация
+
+        </a>
+
+    </div>
+
+    {% if result.base_lore_text %}
+
+    <div class="card">
+
+        <h2>
+            Базовый лор
+        </h2>
+
+        <p>
+            {{ result.base_lore_text }}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+    {% if result.history_text %}
+
+    <div class="card">
+
+        <h2>
+            История мира
+        </h2>
+
+        <p>
+            {{ result.history_text }}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+    {% if result.geography_text %}
+
+    <div class="card">
+
+        <h2>
+            География
+        </h2>
+
+        <p>
+            {{ result.geography_text }}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+    {% if result.politics_text %}
+
+    <div class="card">
+
+        <h2>
+            Политическая структура
+        </h2>
+
+        <p>
+            {{ result.politics_text }}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+    {% if result.cultures_text %}
+
+    <div class="card">
+
+        <h2>
+            Культуры и религии
+        </h2>
+
+        <p>
+            {{ result.cultures_text }}
+        </p>
+
+    </div>
+
+    {% endif %}
+
+    {% if result.consistency_report %}
+
+    <div class="card">
+
+        <h2>
+            Анализ согласованности
+        </h2>
+
+        <div class="score">
+
+            Оценка:
+            {{ result.consistency_report.consistency_score }}/10
+
+        </div>
+
+        {% if result.consistency_issues %}
+
+        <ul class="issues-list">
+
+            {% for issue in result.consistency_issues %}
+
+            <li>
+
+                <strong>
+                    [{{ issue.severity }}]
+                </strong>
+
+                {{ issue.category }} —
+                {{ issue.description }}
+
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+        {% else %}
+
+        <p>
+            Противоречий не обнаружено.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -6,7 +6,7 @@ from core.world_context import WorldContext
 
 from llm.base_llm_client import BaseLLMClient
 
-from prompts.base_lore_prompt import (
+from agents.prompts.base_lore_prompt import (
     BASE_LORE_PROMPT
 )
 

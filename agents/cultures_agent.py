@@ -4,7 +4,7 @@ from core.world_context import WorldContext
 
 from llm.base_llm_client import BaseLLMClient
 
-from prompts.cultures_prompt import (
+from agents.prompts.cultures_prompt import (
     CULTURES_PROMPT
 )
 

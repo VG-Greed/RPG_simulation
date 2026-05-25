@@ -5,7 +5,7 @@ from core.json_parser import safe_json_loads
 
 from llm.base_llm_client import BaseLLMClient
 
-from prompts.user_input_prompt import (
+from agents.prompts.user_input_prompt import (
     USER_INPUT_PROMPT
 )
 
