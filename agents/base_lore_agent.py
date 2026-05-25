@@ -37,7 +37,8 @@ class BaseLoreAgent(BaseAgent):
 
         prompt = BASE_LORE_PROMPT.format(
             requirements=requirements_json,
-            language=language
+            language=language,
+            user_prompt=context.user_prompt
         )
 
         response = await self.llm_client.generate(

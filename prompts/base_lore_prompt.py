@@ -1,6 +1,5 @@
 BASE_LORE_PROMPT = """
-Generate a detailed lore description
-for a tabletop RPG world.
+Generate a fictional world description.
 
 Output language:
 {language}
@@ -8,22 +7,24 @@ Output language:
 User requirements:
 {requirements}
 
-Requirements for generated lore:
-- coherent world concept
-- immersive atmosphere
-- logical world structure
-- thematic consistency
-- suitable for tabletop RPG
-- 1000-3000 characters
-- detailed but concise
+User original description:
+{user_prompt}
 
-The lore should include:
-- overall world concept
-- atmosphere and tone
-- state of civilization
-- role of magic
-- major conflicts
-- important world characteristics
+IMPORTANT RULES:
+- strictly follow the user request
+- do not introduce magic unless explicitly requested
+- do not introduce fantasy races unless explicitly requested
+- do not introduce medieval kingdoms unless appropriate
+- preserve the requested genre and tone
+- if the setting is realistic or modern, maintain realism
+- supernatural elements should only appear if requested
+- focus on the themes described by the user
+
+Requirements:
+- immersive worldbuilding
+- coherent setting
+- suitable for storytelling or tabletop RPG use
+- 1000-3000 characters
 
 Return plain text only.
 """

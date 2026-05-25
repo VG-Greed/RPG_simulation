@@ -325,6 +325,7 @@ dependencies = [
     { name = "dataclasses" },
     { name = "dotenv" },
     { name = "openai" },
+    { name = "python-dotenv" },
     { name = "typing" },
 ]
 
@@ -334,6 +335,7 @@ requires-dist = [
     { name = "dataclasses", specifier = ">=0.8" },
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "openai", specifier = ">=2.38.0" },
+    { name = "python-dotenv", specifier = ">=1.2.2" },
     { name = "typing", specifier = ">=3.10.0.0" },
 ]
 

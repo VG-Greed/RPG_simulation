@@ -3,6 +3,11 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+.env
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7a4ce81 (delete .env)
 # C extensions
 *.so
 

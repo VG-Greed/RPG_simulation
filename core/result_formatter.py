@@ -73,9 +73,39 @@ class ResultFormatter:
 
         if context.consistency_issues:
             sections.append("CONSISTENCY REPORT")
+            score = context.consistency_report.get(
+                "consistency_score",
+                "unknown"
+            )
+
+            sections.append(
+                f"Общая оценка согласованности: {score}/10"
+            )
+
+            sections.append("")
 
             for issue in context.consistency_issues:
-                sections.append(f"- {issue}")
+
+                category = issue.get(
+                    "category",
+                    "unknown"
+                )
+
+                severity = issue.get(
+                    "severity",
+                    "unknown"
+                )
+
+                description = issue.get(
+                    "description",
+                    ""
+                )
+
+                sections.append(
+                    f"- [{severity}] "
+                    f"{category}: "
+                    f"{description}"
+                )
 
             sections.append("")
 

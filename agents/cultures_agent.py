@@ -1,14 +1,15 @@
+from agents.base_agent import BaseAgent
+
 from core.world_context import WorldContext
-from core.json_parser import safe_json_loads
 
 from llm.base_llm_client import BaseLLMClient
 
-from prompts.consistency_prompt import (
-    CONSISTENCY_PROMPT
+from prompts.cultures_prompt import (
+    CULTURES_PROMPT
 )
 
 
-class ConsistencyAnalyzer:
+class CulturesAgent(BaseAgent):
 
     def __init__(
         self,
@@ -27,7 +28,7 @@ class ConsistencyAnalyzer:
             "russian"
         )
 
-        prompt = CONSISTENCY_PROMPT.format(
+        prompt = CULTURES_PROMPT.format(
             language=language,
 
             base_lore=context.base_lore_text,
@@ -36,40 +37,32 @@ class ConsistencyAnalyzer:
 
             geography=context.geography_text,
 
-            politics=context.politics_text,
-
-            cultures=context.cultures_text
+            politics=context.politics_text
         )
 
         response = await self.llm_client.generate(
             prompt=prompt,
 
             system_prompt=(
-                "You are an expert narrative "
-                "consistency analyst for "
-                "fantasy worldbuilding."
+                "You are an expert fantasy "
+                "culture and religion designer."
             ),
 
             model="gpt-4.1-mini",
 
-            temperature=0,
+            temperature=0.9,
 
-            max_tokens=1500
+            max_tokens=2500
         )
 
-        parsed = safe_json_loads(
-            response
-        )
+        context.cultures_text = response
 
-        context.consistency_report = parsed
-
-        context.consistency_issues = parsed.get(
-            "issues",
-            []
-        )
+        context.cultures_data = {
+            "generated": True
+        }
 
         print(
-            "[ConsistencyAnalyzer] Completed"
+            "[CulturesAgent] Completed"
         )
 
         return context

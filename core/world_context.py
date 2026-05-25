@@ -64,7 +64,12 @@ class WorldContext:
     religions_text: str = ""
 
     # ANALYSIS
-    consistency_issues: List[str] = field(
+
+    consistency_report: Dict[str, Any] = field(
+        default_factory=dict
+    )
+
+    consistency_issues: List[Dict[str, Any]] = field(
         default_factory=list
     )
 
@@ -78,7 +83,7 @@ class WorldContext:
     def debug_print(self):
 
         print()
-        print("=== WORLD CONTEXT ===")
+        print("WORLD CONTEXT")
         print()
 
         print("USER REQUIREMENTS:")
@@ -86,12 +91,24 @@ class WorldContext:
 
         print()
         print("BASE LORE:")
-        print(self.base_lore_data)
+        print(self.base_lore_text[:500])
 
         print()
         print("HISTORY:")
-        print(self.history_data)
+        print(self.history_text[:500])
 
         print()
-        print("CONSISTENCY ISSUES:")
-        print(self.consistency_issues)
+        print("GEOGRAPHY:")
+        print(self.geography_text[:300])
+
+        print()
+        print("POLITICS:")
+        print(self.politics_text[:300])
+
+        print()
+        print("CULTURES:")
+        print(self.cultures_text[:300])
+
+        print()
+        print("CONSISTENCY REPORT:")
+        print(self.consistency_report)
